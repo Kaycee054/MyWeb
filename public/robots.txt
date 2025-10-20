@@ -1,0 +1,30 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: /sitemap.xml
+
+# Crawl-delay
+Crawl-delay: 1
+
+# Specific rules
+Allow: /resume/
+Allow: /contact
+Allow: /IMG_2331.jpg
+Allow: /Kelechi_Ekpemiro_CV2025.pdf
+
+# Disallow admin areas
+Disallow: /admin
+Disallow: /api/
+Disallow: /_next/
+Disallow: /node_modules/
+
+# Allow social media crawlers
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /

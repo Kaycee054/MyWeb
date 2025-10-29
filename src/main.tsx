@@ -110,3 +110,4 @@ if (rootElement) {
       <p>The root element with id="root" was not found in the HTML.</p>
     </div>
   `;
+}

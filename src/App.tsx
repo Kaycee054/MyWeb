@@ -1,15 +1,14 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import { Suspense } from 'react'
 import { AuthProvider } from './contexts/AuthContext'
 import { Navigation } from './components/Navigation'
 import { Footer } from './components/Footer'
 import { HomePage } from './pages/HomePage'
-import { ResumePage } from './pages/ResumePage'
-import { ContactPage } from './pages/ContactPage'
-import { AdminPage } from './pages/AdminPage'
 
-// Loading component for Suspense
+const ResumePage = lazy(() => import('./pages/ResumePage').then(module => ({ default: module.ResumePage })))
+const ContactPage = lazy(() => import('./pages/ContactPage').then(module => ({ default: module.ContactPage })))
+const AdminPage = lazy(() => import('./pages/AdminPage').then(module => ({ default: module.AdminPage })))
+
 const LoadingSpinner = () => (
   <div className="min-h-screen bg-black text-white flex items-center justify-center">
     <div className="text-center">

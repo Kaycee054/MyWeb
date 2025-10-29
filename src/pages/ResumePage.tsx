@@ -83,7 +83,6 @@ export function ResumePage() {
   const fetchResumeData = async () => {
     try {
       setError(null)
-      setLoading(true)
 
       // Always provide default resume data first
       const defaultResumes: Record<string, Resume> = {
@@ -211,87 +210,79 @@ export function ResumePage() {
         }
       }
 
-      // Set default resume immediately
       const defaultResume = defaultResumes[slug!]
       if (defaultResume) {
         setResume(defaultResume)
+        setLoading(false)
       }
 
-      // Try to fetch from database to override defaults
       let resumeData = null
-      try {
-        const { data } = await supabase
-          .from('resumes')
-          .select('*')
-          .eq('slug', slug)
-          .single()
-
-        resumeData = data
-        if (resumeData) {
-          setResume(resumeData)
-        }
-      } catch (dbError) {
-        console.log('Using default resume data')
-      }
-
-      // Fetch experiences - try database first, then use defaults
-      let experiencesData: Experience[] = []
-      
-      // Only query database if we have a valid UUID from database resume
-      if (resumeData && resumeData.id) {
+      setTimeout(async () => {
         try {
-          const { data: dbExperiences } = await supabase
-            .from('experiences')
-            .select(`
-              *,
-              artifacts (*)
-            `)
-            .eq('resume_id', resumeData.id)
-            .eq('is_visible', true)
-            .order('start_date', { ascending: false })
+          const { data } = await supabase
+            .from('resumes')
+            .select('*')
+            .eq('slug', slug)
+            .single()
 
-          if (dbExperiences && dbExperiences.length > 0) {
-            experiencesData = dbExperiences as Experience[]
+          resumeData = data
+          if (resumeData) {
+            setResume(resumeData)
           }
         } catch (dbError) {
-          console.log('Database experiences not available, using defaults')
+          console.log('Using default resume data')
         }
-      }
+      }, 50)
 
-      // If no database experiences, use default experiences
-      if (experiencesData.length === 0) {
-        experiencesData = getDefaultExperiences(slug!)
-      }
+      const defaultExperiences = getDefaultExperiences(slug!)
+      setExperiences(defaultExperiences)
 
-      setExperiences(experiencesData)
+      if (resumeData && resumeData.id) {
+        setTimeout(async () => {
+          try {
+            const { data: dbExperiences } = await supabase
+              .from('experiences')
+              .select(`
+                *,
+                artifacts (*)
+              `)
+              .eq('resume_id', resumeData.id)
+              .eq('is_visible', true)
+              .order('start_date', { ascending: false })
 
-      // Fetch projects
-      try {
-        if (resumeData && resumeData.id) {
-          const { data: projectsData } = await supabase
-            .from('projects')
-            .select('*')
-            .eq('is_featured', true)
-            .order('created_at', { ascending: false })
-            .limit(4)
-
-          if (projectsData && projectsData.length > 0) {
-            setProjects(projectsData)
-          } else {
-            setProjects(getDefaultProjects())
+            if (dbExperiences && dbExperiences.length > 0) {
+              setExperiences(dbExperiences as Experience[])
+            }
+          } catch (dbError) {
+            console.log('Using default experiences')
           }
-        } else {
-          setProjects(getDefaultProjects())
-        }
-      } catch (dbError) {
-        console.log('Using default projects')
-        setProjects(getDefaultProjects())
+        }, 100)
+      }
+
+      setProjects(getDefaultProjects())
+
+      if (resumeData && resumeData.id) {
+        setTimeout(async () => {
+          try {
+            const { data: projectsData } = await supabase
+              .from('projects')
+              .select('*')
+              .eq('is_featured', true)
+              .order('created_at', { ascending: false })
+              .limit(4)
+
+            if (projectsData && projectsData.length > 0) {
+              setProjects(projectsData)
+            }
+          } catch (dbError) {
+            console.log('Using default projects')
+          }
+        }, 150)
       }
 
     } catch (error) {
       console.error('Error fetching resume data:', error)
       setError('Failed to load resume data')
-    } finally {
       setLoading(false)
     }
   }

@@ -68,6 +68,14 @@ export function HomePage() {
     fetchResumes()
   }, [])
 
+  useEffect(() => {
+    const link = document.createElement('link')
+    link.rel = 'preload'
+    link.as = 'image'
+    link.href = '/IMG_2331.jpg'
+    document.head.appendChild(link)
+  }, [])
+
   const fetchResumes = async () => {
     try {
       setError(null)
@@ -97,25 +105,23 @@ export function HomePage() {
         }
       ]
 
-      // Set default resumes immediately to prevent white screen
       setResumes(defaultResumes)
       setLoading(false)
 
-      try {
-        // Try to fetch from database first
-        const { data, error } = await supabase
-          .from('resumes')
-          .select('id, slug, title, description, image_url, created_at')
-          .order('display_order', { ascending: true, nullsLast: true })
+      setTimeout(async () => {
+        try {
+          const { data } = await supabase
+            .from('resumes')
+            .select('id, slug, title, description, image_url, created_at')
+            .order('display_order', { ascending: true, nullsLast: true })
 
-        if (data && data.length > 0) {
-          // Use database data if available
-          setResumes(data)
+          if (data && data.length > 0) {
+            setResumes(data)
+          }
+        } catch (dbError) {
+          console.log('Using default resumes')
         }
-      } catch (dbError) {
-        // If database fails, use defaults
-        console.log('Using default resumes due to database error:', dbError)
-      }
+      }, 100)
     } catch (error) {
       console.error('Error fetching resumes:', error)
       // Fallback content already set above

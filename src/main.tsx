@@ -47,6 +47,15 @@ if (rootElement) {
     
     // Hide loading screen after React renders
     setTimeout(hideLoadingScreen, 100);
+
+    // Register service worker for caching
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js').catch(() => {
+          // Service worker registration failed, continue anyway
+        });
+      });
+    }
   } catch (error) {
     console.error('Failed to render app:', error);
     hideLoadingScreen();

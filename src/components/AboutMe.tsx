@@ -26,6 +26,8 @@ export function AboutMe() {
                 src="https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg?auto=compress&cs=tinysrgb&w=800"
                 alt="Kelechi Ekpemiro"
                 className="w-full max-w-md mx-auto rounded-2xl shadow-2xl"
+                loading="lazy"
+                decoding="async"
               />
               <div className="absolute inset-0 rounded-2xl bg-gradient-to-t from-black/20 to-transparent" />
             </motion.div>

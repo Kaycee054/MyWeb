@@ -71,6 +71,7 @@ export function HomePage() {
   const fetchResumes = async () => {
     try {
       setError(null)
+      
       // Always show the three main resume areas
       const defaultResumes = [
         {
@@ -96,6 +97,10 @@ export function HomePage() {
         }
       ]
 
+      // Set default resumes immediately to prevent white screen
+      setResumes(defaultResumes)
+      setLoading(false)
+
       try {
         // Try to fetch from database first
         const { data, error } = await supabase
@@ -106,43 +111,14 @@ export function HomePage() {
         if (data && data.length > 0) {
           // Use database data if available
           setResumes(data)
-        } else {
-          // Use default resumes
-          setResumes(defaultResumes)
         }
       } catch (dbError) {
         // If database fails, use defaults
         console.log('Using default resumes due to database error:', dbError)
-        setResumes(defaultResumes)
       }
     } catch (error) {
       console.error('Error fetching resumes:', error)
-      // Always provide fallback content
-      setResumes([
-        {
-          id: 'default-it',
-          slug: 'it-project-manager',
-          title: 'IT Project Manager',
-          description: 'Leading technical, analytical, and applied projects from inception to delivery. Expertise in cross-functional global teams, helping enterprises curate and manage IT, PLM, Process, and operations initiatives.',
-          image_url: '/IMG_2331.jpg'
-        },
-        {
-          id: 'default-media',
-          slug: 'media-producer',
-          title: 'Media Producer & Content Creator',
-          description: 'Creative visual storytelling through videography, live streaming, and post-production. Expertise in Adobe Creative Suite, live broadcasting, and event coverage.',
-          image_url: '/IMG_2331.jpg'
-        },
-        {
-          id: 'default-biz',
-          slug: 'business-development',
-          title: 'Business Development & Systems Integration',
-          description: 'Strategic business consultant focused on tech startups and SMEs, with expertise in sales systems optimization, CRM integration, and automated accounting solutions.',
-          image_url: '/IMG_2331.jpg'
-        }
-      ])
-    } finally {
-      setLoading(false)
+      // Fallback content already set above
     }
   }
 

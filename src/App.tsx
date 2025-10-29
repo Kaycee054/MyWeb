@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { Suspense } from 'react'
 import { AuthProvider } from './contexts/AuthContext'
 import { Navigation } from './components/Navigation'
 import { Footer } from './components/Footer'
@@ -7,6 +8,16 @@ import { HomePage } from './pages/HomePage'
 import { ResumePage } from './pages/ResumePage'
 import { ContactPage } from './pages/ContactPage'
 import { AdminPage } from './pages/AdminPage'
+
+// Loading component for Suspense
+const LoadingSpinner = () => (
+  <div className="min-h-screen bg-black text-white flex items-center justify-center">
+    <div className="text-center">
+      <div className="w-12 h-12 border-2 border-white border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+      <p className="text-gray-400">Loading...</p>
+    </div>
+  </div>
+);
 
 class ErrorBoundary extends React.Component<
   { children: React.ReactNode },
@@ -66,14 +77,16 @@ function App() {
         <Router>
           <div className="min-h-screen bg-black text-white">
             <Navigation />
-            <main role="main">
-              <Routes>
-                <Route path="/" element={<HomePage />} />
-                <Route path="/resume/:id" element={<ResumePage />} />
-                <Route path="/contact" element={<ContactPage />} />
-                <Route path="/admin" element={<AdminPage />} />
-              </Routes>
-            </main>
+            <Suspense fallback={<LoadingSpinner />}>
+              <main role="main">
+                <Routes>
+                  <Route path="/" element={<HomePage />} />
+                  <Route path="/resume/:id" element={<ResumePage />} />
+                  <Route path="/contact" element={<ContactPage />} />
+                  <Route path="/admin" element={<AdminPage />} />
+                </Routes>
+              </main>
+            </Suspense>
             <Footer />
           </div>
         </Router>

@@ -1,8 +1,20 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-import { performanceManager } from './lib/performance';
 import App from './App.tsx';
 import './index.css';
+
+// Hide loading screen immediately when React starts
+const hideLoadingScreen = () => {
+  const loadingScreen = document.getElementById('loading-screen');
+  if (loadingScreen) {
+    loadingScreen.style.opacity = '0';
+    loadingScreen.style.transition = 'opacity 0.3s ease-out';
+    setTimeout(() => {
+      loadingScreen.remove();
+      document.body.classList.add('loaded');
+    }, 300);
+  }
+};
 
 // Enhanced error handling for deployment debugging
 window.addEventListener('error', (e) => {
@@ -21,43 +33,54 @@ window.addEventListener('unhandledrejection', (e) => {
   console.error('Promise rejection details:', e);
 });
 
-// Check if we're in production and log environment info
-console.log('Environment:', {
-  NODE_ENV: import.meta.env.MODE,
-  BASE_URL: import.meta.env.BASE_URL,
-  PROD: import.meta.env.PROD,
-  DEV: import.meta.env.DEV
-});
-
-try {
-  // Initialize performance optimizations
-  performanceManager.init();
-} catch (error) {
-  console.error('Performance manager initialization failed:', error);
-}
-
 const rootElement = document.getElementById('root');
-console.log('Root element found:', !!rootElement);
 
 if (rootElement) {
   try {
     const root = createRoot(rootElement);
-    console.log('React root created successfully');
     
     root.render(
       <StrictMode>
         <App />
       </StrictMode>
     );
-    console.log('App rendered successfully');
+    
+    // Hide loading screen after React renders
+    setTimeout(hideLoadingScreen, 100);
   } catch (error) {
     console.error('Failed to render app:', error);
+    hideLoadingScreen();
     // Fallback error display
     rootElement.innerHTML = `
-      <div style="padding: 20px; font-family: Arial, sans-serif; color: #333;">
+      <div style="
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #000;
+        color: #fff;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        text-align: center;
+        padding: 20px;
+      ">
         <h1>Application Error</h1>
         <p>Failed to load the application. Please check the console for details.</p>
-        <pre style="background: #f5f5f5; padding: 10px; border-radius: 4px; overflow: auto;">
+        <button onclick="window.location.reload()" style="
+          background: #fff;
+          color: #000;
+          border: none;
+          padding: 12px 24px;
+          border-radius: 8px;
+          font-weight: 600;
+          cursor: pointer;
+          margin-top: 20px;
+        ">Refresh Page</button>
+        <pre style="background: #111; padding: 10px; border-radius: 4px; overflow: auto; margin-top: 20px; font-size: 12px; max-width: 80%; color: #ff6b6b;">
           ${error instanceof Error ? error.stack : String(error)}
         </pre>
       </div>
@@ -65,10 +88,25 @@ if (rootElement) {
   }
 } else {
   console.error('Root element not found');
+  hideLoadingScreen();
   document.body.innerHTML = `
-    <div style="padding: 20px; font-family: Arial, sans-serif; color: #333;">
+    <div style="
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #000;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      text-align: center;
+      padding: 20px;
+    ">
       <h1>Root Element Missing</h1>
       <p>The root element with id="root" was not found in the HTML.</p>
     </div>
   `;
-}

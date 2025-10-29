@@ -17,11 +17,12 @@ export function Hero() {
         <img
           src="/IMG_2331.jpg"
           alt="Professional Portrait"
-         className="w-full h-full object-cover object-[center_20%] opacity-30"
+          className="w-full h-full object-cover object-[center_20%] opacity-30"
+          loading="eager"
           onError={(e) => {
             const target = e.target as HTMLImageElement;
             target.src = "https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&dpr=1";
-           target.className = "w-full h-full object-cover object-[center_20%] opacity-30";
+            target.className = "w-full h-full object-cover object-[center_20%] opacity-30";
           }}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/90" />

@@ -6,11 +6,11 @@ import './index.css';
 const hideLoadingScreen = () => {
   const loadingScreen = document.getElementById('loading-screen');
   if (loadingScreen) {
-    loadingScreen.style.display = 'none';
+    loadingScreen.classList.add('hidden');
   }
 };
 
-hideLoadingScreen();
+setTimeout(hideLoadingScreen, 0);
 
 window.addEventListener('error', (e) => {
   console.error('Global error:', e.error);

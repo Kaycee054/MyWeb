@@ -20,18 +20,6 @@ export function AdminPage() {
     )
   }
 
-  // Add some basic protection - redirect if accessed directly without auth
-  React.useEffect(() => {
-    if (!user && !loading) {
-      const timer = setTimeout(() => {
-        if (!user) {
-          navigate('/')
-        }
-      }, 5000) // Give 5 seconds for login attempt
-      
-      return () => clearTimeout(timer)
-    }
-  }, [user, loading, navigate])
 
   return (
     <Layout>

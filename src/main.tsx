@@ -3,34 +3,23 @@ import { createRoot } from 'react-dom/client';
 import App from './App.tsx';
 import './index.css';
 
-// Hide loading screen immediately when React starts
 const hideLoadingScreen = () => {
   const loadingScreen = document.getElementById('loading-screen');
   if (loadingScreen) {
-    loadingScreen.style.opacity = '0';
-    loadingScreen.style.transition = 'opacity 0.3s ease-out';
-    setTimeout(() => {
-      loadingScreen.remove();
-      document.body.classList.add('loaded');
-    }, 300);
+    loadingScreen.style.display = 'none';
   }
 };
 
-// Enhanced error handling for deployment debugging
+hideLoadingScreen();
+
 window.addEventListener('error', (e) => {
   console.error('Global error:', e.error);
-  console.error('Error details:', {
-    message: e.message,
-    filename: e.filename,
-    lineno: e.lineno,
-    colno: e.colno,
-    stack: e.error?.stack
-  });
+  hideLoadingScreen();
 });
 
 window.addEventListener('unhandledrejection', (e) => {
   console.error('Unhandled promise rejection:', e.reason);
-  console.error('Promise rejection details:', e);
+  hideLoadingScreen();
 });
 
 const rootElement = document.getElementById('root');
@@ -38,22 +27,16 @@ const rootElement = document.getElementById('root');
 if (rootElement) {
   try {
     const root = createRoot(rootElement);
-    
+
     root.render(
       <StrictMode>
         <App />
       </StrictMode>
     );
-    
-    // Hide loading screen after React renders
-    setTimeout(hideLoadingScreen, 100);
 
-    // Register service worker for caching
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/sw.js').catch(() => {
-          // Service worker registration failed, continue anyway
-        });
+        navigator.serviceWorker.register('/sw.js').catch(() => {});
       });
     }
   } catch (error) {

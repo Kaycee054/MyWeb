@@ -32,7 +32,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         console.warn('Auth initialization timeout');
         setLoading(false);
       }
-    }, 3000);
+    }, 1500);
 
     // Get initial session
     supabase.auth.getSession()
@@ -88,16 +88,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     signOut,
   }
 
-  if (loading) {
-    return (
-      <div className="min-h-screen bg-black text-white flex items-center justify-center">
-        <div className="text-center">
-          <div className="w-12 h-12 border-2 border-white border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-          <p className="text-gray-400">Initializing...</p>
-        </div>
-      </div>
-    );
-  }
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
 }

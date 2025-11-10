@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { Hop as Home, User, Briefcase, MessageSquare, Menu, X } from 'lucide-react'
+import { Home, User, Briefcase, MessageSquare, Menu, X } from 'lucide-react'
 import { useAuth } from '../contexts/AuthContext'
 
 export function Navigation() {

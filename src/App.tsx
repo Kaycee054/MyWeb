@@ -1,6 +1,6 @@
 import React, { lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import { AuthProvider } from './contexts/AuthContext'
+import { AuthProvider, useAuth } from './contexts/AuthContext'
 import { Navigation } from './components/Navigation'
 import { Footer } from './components/Footer'
 import { HomePage } from './pages/HomePage'
@@ -69,25 +69,37 @@ class ErrorBoundary extends React.Component<
   }
 }
 
+function AppContent() {
+  const { loading } = useAuth();
+
+  if (loading) {
+    return <LoadingSpinner />;
+  }
+
+  return (
+    <div className="min-h-screen bg-black text-white">
+      <Navigation />
+      <Suspense fallback={<LoadingSpinner />}>
+        <main role="main">
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/resume/:id" element={<ResumePage />} />
+            <Route path="/contact" element={<ContactPage />} />
+            <Route path="/admin" element={<AdminPage />} />
+          </Routes>
+        </main>
+      </Suspense>
+      <Footer />
+    </div>
+  );
+}
+
 function App() {
   return (
     <ErrorBoundary>
       <AuthProvider>
         <Router>
-          <div className="min-h-screen bg-black text-white">
-            <Navigation />
-            <Suspense fallback={<LoadingSpinner />}>
-              <main role="main">
-                <Routes>
-                  <Route path="/" element={<HomePage />} />
-                  <Route path="/resume/:id" element={<ResumePage />} />
-                  <Route path="/contact" element={<ContactPage />} />
-                  <Route path="/admin" element={<AdminPage />} />
-                </Routes>
-              </main>
-            </Suspense>
-            <Footer />
-          </div>
+          <AppContent />
         </Router>
       </AuthProvider>
     </ErrorBoundary>

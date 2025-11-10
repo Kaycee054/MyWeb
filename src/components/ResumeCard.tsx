@@ -67,13 +67,23 @@ export function ResumeCard({ slug, title, description, image, index }: ResumeCar
       className="bg-gray-900/80 backdrop-blur-sm rounded-2xl overflow-hidden hover:bg-gray-800/90 hover:scale-105 transition-all duration-300 group cursor-pointer border border-gray-700/50 hover:border-gray-600/50 shadow-xl"
     >
       <Link to={`/resume/${slug}`} className="block">
-        <div className="h-48 overflow-hidden bg-gradient-to-br from-gray-800 to-gray-900">
-          <img
-            src={image || 'https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=800'}
-            alt={title}
-           className="w-full h-full object-cover object-[center_20%] group-hover:scale-110 transition-transform duration-500"
-            loading="lazy"
-          />
+        <div className="h-48 overflow-hidden bg-gradient-to-br from-gray-800 to-gray-900 relative">
+          {image && (
+            <img
+              src={image}
+              alt={title}
+              className="w-full h-full object-cover object-[center_20%] group-hover:scale-110 transition-transform duration-500 blur-xl absolute inset-0 opacity-30"
+              loading="lazy"
+            />
+          )}
+          {image && (
+            <img
+              src={image}
+              alt={title}
+              className="w-full h-full object-cover object-[center_20%] group-hover:scale-110 transition-transform duration-500 relative z-10"
+              loading="lazy"
+            />
+          )}
         </div>
       
       <div className="p-8">

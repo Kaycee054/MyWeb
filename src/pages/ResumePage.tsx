@@ -875,11 +875,18 @@ export function ResumePage() {
             <div className="flex flex-col md:flex-row gap-8 items-start mb-8">
               {/* Passport-style Image */}
               {resume.image_url && (
-                <div className="w-full md:w-48 lg:w-56 flex-shrink-0">
+                <div className="w-full md:w-48 lg:w-56 flex-shrink-0 relative">
                   <img
                     src={resume.image_url}
                     alt={resume.title}
-                    className="w-full rounded-xl shadow-lg"
+                    className="w-full rounded-xl shadow-lg blur-xl absolute inset-0 opacity-40"
+                    loading="eager"
+                    aria-hidden="true"
+                  />
+                  <img
+                    src={resume.image_url}
+                    alt={resume.title}
+                    className="w-full rounded-xl shadow-lg relative z-10"
                     loading="eager"
                   />
                 </div>

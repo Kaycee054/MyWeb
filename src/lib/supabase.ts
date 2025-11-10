@@ -4,10 +4,17 @@ const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || ''
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY || ''
 
 if (!supabaseUrl || !supabaseAnonKey) {
-  console.error('Missing Supabase environment variables');
+  console.error('⚠️ CONFIGURATION ERROR: Missing Supabase environment variables!');
+  console.error('VITE_SUPABASE_URL:', supabaseUrl ? 'Set' : 'Missing');
+  console.error('VITE_SUPABASE_ANON_KEY:', supabaseAnonKey ? 'Set' : 'Missing');
+  console.error('\nTo fix this:');
+  console.error('1. Go to your Netlify dashboard');
+  console.error('2. Navigate to Site settings → Environment variables');
+  console.error('3. Add VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY');
+  console.error('4. Redeploy your site\n');
 }
 
-export const supabase = createClient(supabaseUrl, supabaseAnonKey, {
+export const supabase = createClient(supabaseUrl || 'https://placeholder.supabase.co', supabaseAnonKey || 'placeholder', {
   auth: {
     persistSession: true,
     autoRefreshToken: true,
@@ -20,6 +27,8 @@ export const supabase = createClient(supabaseUrl, supabaseAnonKey, {
     }
   }
 })
+
+export const isSupabaseConfigured = Boolean(supabaseUrl && supabaseAnonKey)
 
 export type Database = {
   public: {

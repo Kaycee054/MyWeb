@@ -5,7 +5,7 @@ import { Hero } from '../components/Hero'
 import { ResumeCard } from '../components/ResumeCard'
 import { AboutMe } from '../components/AboutMe'
 import { Layout } from '../components/Layout'
-import { supabase } from '../lib/supabase'
+import { supabase, isSupabaseConfigured } from '../lib/supabase'
 
 interface Resume {
   id: string
@@ -108,20 +108,22 @@ export function HomePage() {
       setResumes(defaultResumes)
       setLoading(false)
 
-      setTimeout(async () => {
-        try {
-          const { data } = await supabase
-            .from('resumes')
-            .select('id, slug, title, description, image_url, created_at')
-            .order('display_order', { ascending: true, nullsLast: true })
+      if (isSupabaseConfigured) {
+        setTimeout(async () => {
+          try {
+            const { data } = await supabase
+              .from('resumes')
+              .select('id, slug, title, description, image_url, created_at')
+              .order('display_order', { ascending: true, nullsLast: true })
 
-          if (data && data.length > 0) {
-            setResumes(data)
+            if (data && data.length > 0) {
+              setResumes(data)
+            }
+          } catch (dbError) {
+            console.log('Using default resumes')
           }
-        } catch (dbError) {
-          console.log('Using default resumes')
-        }
-      }, 100)
+        }, 100)
+      }
     } catch (error) {
       console.error('Error fetching resumes:', error)
       // Fallback content already set above

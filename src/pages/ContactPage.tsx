@@ -1,7 +1,7 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { useSEO } from '../hooks/useSEO'
-import { Mail, Phone, MapPin, Linkedin, Github } from 'lucide-react'
+import { Mail, MapPin, Linkedin } from 'lucide-react'
 import { Layout } from '../components/Layout'
 import { ContactForm } from '../components/ContactForm'
 
@@ -19,14 +19,8 @@ export function ContactPage() {
     {
       icon: Mail,
       label: 'Email',
-      value: 'contact@example.com',
-      href: 'mailto:contact@example.com'
-    },
-    {
-      icon: Phone,
-      label: 'Phone',
-      value: '+7 (XXX) XXX-XX-XX',
-      href: 'tel:+7XXXXXXXXXX'
+      value: 'ekpemirokelechi@gmail.com',
+      href: 'mailto:ekpemirokelechi@gmail.com'
     },
     {
       icon: MapPin,
@@ -37,14 +31,8 @@ export function ContactPage() {
     {
       icon: Linkedin,
       label: 'LinkedIn',
-      value: 'linkedin.com/in/profile',
-      href: 'https://linkedin.com/in/profile'
-    },
-    {
-      icon: Github,
-      label: 'GitHub',
-      value: 'github.com/profile',
-      href: 'https://github.com/profile'
+      value: 'linkedin.com/in/kelechi-ekpemiro-a78512154',
+      href: 'https://linkedin.com/in/kelechi-ekpemiro-a78512154'
     }
   ]
 

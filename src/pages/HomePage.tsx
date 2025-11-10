@@ -87,21 +87,21 @@ export function HomePage() {
           slug: 'it-project-manager',
           title: 'IT Project Manager',
           description: 'Leading technical, analytical, and applied projects from inception to delivery. Expertise in cross-functional global teams, helping enterprises curate and manage IT, PLM, Process, and operations initiatives.',
-          image_url: '/IMG_2331.jpg'
+          image_url: 'https://res.cloudinary.com/dgifshcbo/image/upload/f_auto,q_auto,w_800/v1762779314/IMG_2330_ybo9na.jpg'
         },
         {
           id: 'default-media',
           slug: 'media-producer',
           title: 'Media Producer & Content Creator',
           description: 'Creative visual storytelling through videography, live streaming, and post-production. Expertise in Adobe Creative Suite, live broadcasting, and event coverage.',
-          image_url: '/IMG_2331.jpg'
+          image_url: 'https://res.cloudinary.com/dgifshcbo/image/upload/f_auto,q_auto,w_800/v1762684768/IMG_4520_qyxzpv.jpg'
         },
         {
           id: 'default-biz',
           slug: 'business-development',
           title: 'Business Development & Systems Integration',
           description: 'Strategic business consultant focused on tech startups and SMEs, with expertise in sales systems optimization, CRM integration, and automated accounting solutions.',
-          image_url: '/IMG_2331.jpg'
+          image_url: 'https://res.cloudinary.com/dgifshcbo/image/upload/f_auto,q_auto,w_800/v1762777946/IMG_5936_arqatm.jpg'
         }
       ]
 
@@ -143,9 +143,6 @@ export function HomePage() {
             <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6">
               Areas of Expertise
             </h2>
-            <p className="text-lg text-gray-400 max-w-2xl mx-auto">
-              Click on any area to explore detailed experience, portfolio, and achievements.
-            </p>
           </motion.div>
 
           {error && (

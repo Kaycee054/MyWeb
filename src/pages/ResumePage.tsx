@@ -871,13 +871,26 @@ export function ResumePage() {
                 <p className="text-sm">{error} - Showing default content</p>
               </div>
             )}
+
+            {/* Hero Image */}
+            {resume.image_url && (
+              <div className="w-full h-64 sm:h-80 rounded-2xl overflow-hidden mb-8">
+                <img
+                  src={resume.image_url}
+                  alt={resume.title}
+                  className="w-full h-full object-cover"
+                  loading="eager"
+                />
+              </div>
+            )}
+
             <h1 className="text-4xl sm:text-5xl font-bold text-white mb-4">
               {resume.title}
             </h1>
             <p className="text-xl text-gray-400 mb-6">
               {resume.description}
             </p>
-            
+
             {/* Introduction/Summary */}
             {resume.intro_text && (
               <div className="bg-gray-900/50 rounded-xl p-6 mb-6">

@@ -145,16 +145,21 @@
     </style>
 
     <script>
-      // Force hide loading screen after 2 seconds no matter what
-      setTimeout(function() {
+      // Function to hide loading screen
+      window.hideLoadingScreen = function() {
         var loadingScreen = document.getElementById('loading-screen');
-        if (loadingScreen) {
+        if (loadingScreen && !loadingScreen.classList.contains('fade-out')) {
           loadingScreen.classList.add('fade-out');
           setTimeout(function() {
             loadingScreen.style.display = 'none';
-          }, 500); // Wait for fade transition
+          }, 500);
         }
-      }, 2000);
+      };
+
+      // Fallback: Force hide after 3 seconds if React hasn't loaded
+      setTimeout(function() {
+        window.hideLoadingScreen();
+      }, 3000);
     </script>
 
     <div id="root"></div>

@@ -15,6 +15,13 @@ if (rootElement) {
       </StrictMode>
     );
 
+    // Hide loading screen once React has rendered
+    setTimeout(() => {
+      if (typeof window.hideLoadingScreen === 'function') {
+        window.hideLoadingScreen();
+      }
+    }, 100);
+
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
         navigator.serviceWorker.register('/sw.js').catch(() => {});

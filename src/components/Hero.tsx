@@ -14,16 +14,12 @@ export function Hero() {
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       <div className="absolute inset-0 z-0">
         <img
-          src="/IMG_2331.jpg"
+          src="https://res.cloudinary.com/dgifshcbo/image/upload/f_auto,q_auto,w_1920/v1762684765/IMG_2331_sd7mzb.jpg"
           alt="Professional Portrait"
           className="w-full h-full object-cover object-[center_20%] opacity-30"
           loading="eager"
           fetchPriority="high"
           decoding="async"
-          onError={(e) => {
-            const target = e.target as HTMLImageElement;
-            target.src = "https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&dpr=1";
-          }}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/90" />
       </div>

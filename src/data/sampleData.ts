@@ -4,7 +4,7 @@ export const sampleResumes = [
     slug: 'it-project-manager',
     title: 'IT Project Manager',
     description: 'Leading technical, analytical, and applied projects from inception to delivery. Expertise in cross-functional global teams, helping enterprises curate and manage IT, PLM, Process, and operations initiatives.',
-    image_url: '/IMG_2331.jpg',
+    image_url: 'https://res.cloudinary.com/dgifshcbo/image/upload/f_auto,q_auto,w_800/v1762684765/IMG_2331_sd7mzb.jpg',
     intro_text: JSON.stringify({
       blocks: [
         {
@@ -67,7 +67,7 @@ export const sampleResumes = [
     slug: 'media-producer',
     title: 'Media Producer & Content Creator',
     description: 'Creative visual storytelling through videography, live streaming, and post-production. Expertise in Adobe Creative Suite, live broadcasting, and event coverage.',
-    image_url: '/IMG_2331.jpg',
+    image_url: 'https://res.cloudinary.com/dgifshcbo/image/upload/f_auto,q_auto,w_800/v1762684768/IMG_4520_qyxzpv.jpg',
     intro_text: JSON.stringify({
       blocks: [
         {
@@ -93,7 +93,7 @@ export const sampleResumes = [
     slug: 'business-development',
     title: 'Business Development & Systems Integration',
     description: 'Strategic business consultant focused on tech startups and SMEs, with expertise in sales systems optimization, CRM integration, and automated accounting solutions.',
-    image_url: '/IMG_2331.jpg',
+    image_url: 'https://res.cloudinary.com/dgifshcbo/image/upload/f_auto,q_auto,w_800/v1762777946/IMG_5936_arqatm.jpg',
     intro_text: JSON.stringify({
       blocks: [
         {

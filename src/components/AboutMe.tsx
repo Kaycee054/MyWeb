@@ -23,7 +23,7 @@ export function AboutMe() {
               className="relative"
             >
               <img
-                src="https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg?auto=compress&cs=tinysrgb&w=800"
+                src="https://res.cloudinary.com/dgifshcbo/image/upload/f_auto,q_auto,w_800/v1762684765/IMG_2331_2_nfpo8z.jpg"
                 alt="Kelechi Ekpemiro"
                 className="w-full max-w-md mx-auto rounded-2xl shadow-2xl"
                 loading="lazy"

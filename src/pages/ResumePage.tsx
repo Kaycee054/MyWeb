@@ -872,24 +872,28 @@ export function ResumePage() {
               </div>
             )}
 
-            {/* Hero Image */}
-            {resume.image_url && (
-              <div className="w-full h-64 sm:h-80 rounded-2xl overflow-hidden mb-8">
-                <img
-                  src={resume.image_url}
-                  alt={resume.title}
-                  className="w-full h-full object-cover"
-                  loading="eager"
-                />
-              </div>
-            )}
+            <div className="flex flex-col md:flex-row gap-8 items-start mb-8">
+              {/* Passport-style Image */}
+              {resume.image_url && (
+                <div className="w-full md:w-48 lg:w-56 flex-shrink-0">
+                  <img
+                    src={resume.image_url}
+                    alt={resume.title}
+                    className="w-full rounded-xl shadow-lg"
+                    loading="eager"
+                  />
+                </div>
+              )}
 
-            <h1 className="text-4xl sm:text-5xl font-bold text-white mb-4">
-              {resume.title}
-            </h1>
-            <p className="text-xl text-gray-400 mb-6">
-              {resume.description}
-            </p>
+              <div className="flex-1">
+                <h1 className="text-4xl sm:text-5xl font-bold text-white mb-4">
+                  {resume.title}
+                </h1>
+                <p className="text-xl text-gray-400 mb-6">
+                  {resume.description}
+                </p>
+              </div>
+            </div>
 
             {/* Introduction/Summary */}
             {resume.intro_text && (

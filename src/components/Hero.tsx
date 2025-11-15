@@ -16,7 +16,7 @@ export function Hero() {
         <img
           src="https://res.cloudinary.com/dgifshcbo/image/upload/f_auto,q_auto,w_1920/v1762684765/IMG_2331_sd7mzb.jpg"
           alt="Professional Portrait"
-          className="w-full h-full object-cover object-[center_20%] opacity-30"
+          className="w-full h-full object-cover object-[center_20%] opacity-60"
           loading="eager"
           fetchPriority="high"
           decoding="async"

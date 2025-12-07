@@ -8,6 +8,7 @@ import { HomePage } from './pages/HomePage'
 const ResumePage = lazy(() => import('./pages/ResumePage').then(module => ({ default: module.ResumePage })))
 const ContactPage = lazy(() => import('./pages/ContactPage').then(module => ({ default: module.ContactPage })))
 const AdminPage = lazy(() => import('./pages/AdminPage').then(module => ({ default: module.AdminPage })))
+const PasswordResetConfirmPage = lazy(() => import('./pages/PasswordResetConfirmPage').then(module => ({ default: module.PasswordResetConfirmPage })))
 
 const LoadingSpinner = () => (
   <div className="min-h-screen bg-black text-white flex items-center justify-center">
@@ -86,6 +87,7 @@ function AppContent() {
             <Route path="/resume/:id" element={<ResumePage />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/admin" element={<AdminPage />} />
+            <Route path="/admin/reset-password" element={<PasswordResetConfirmPage />} />
           </Routes>
         </main>
       </Suspense>

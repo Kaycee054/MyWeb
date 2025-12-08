@@ -1,13 +1,14 @@
 import React from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { Home, User, Briefcase, MessageSquare, Menu, X } from 'lucide-react'
+import { Home, User, Briefcase, MessageSquare, Menu, X, Lightbulb } from 'lucide-react'
 import { useAuth } from '../contexts/AuthContext'
 
 export function Navigation() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false)
   const [navItems, setNavItems] = React.useState([
     { path: '/', icon: Home, label: 'Home' },
+    { path: '/ric-project', icon: Lightbulb, label: 'RIC Project' },
     { path: '/resume/it-project-manager', icon: Briefcase, label: 'IT Project Manager' },
     { path: '/resume/media-producer', icon: User, label: 'Media Producer' },
     { path: '/resume/business-development', icon: Briefcase, label: 'Business Development' },
@@ -28,6 +29,7 @@ export function Navigation() {
         if (resumes && resumes.length > 0) {
           const dynamicNavItems = [
             { path: '/', icon: Home, label: 'Home' },
+            { path: '/ric-project', icon: Lightbulb, label: 'RIC Project' },
             ...resumes.map(resume => ({
               path: `/resume/${resume.slug}`,
               icon: Briefcase,

@@ -9,6 +9,7 @@ const ResumePage = lazy(() => import('./pages/ResumePage').then(module => ({ def
 const ContactPage = lazy(() => import('./pages/ContactPage').then(module => ({ default: module.ContactPage })))
 const AdminPage = lazy(() => import('./pages/AdminPage').then(module => ({ default: module.AdminPage })))
 const PasswordResetConfirmPage = lazy(() => import('./pages/PasswordResetConfirmPage').then(module => ({ default: module.PasswordResetConfirmPage })))
+const RICProjectPage = lazy(() => import('./pages/RICProjectPage').then(module => ({ default: module.RICProjectPage })))
 
 const LoadingSpinner = () => (
   <div className="min-h-screen bg-black text-white flex items-center justify-center">
@@ -84,6 +85,7 @@ function AppContent() {
         <main role="main">
           <Routes>
             <Route path="/" element={<HomePage />} />
+            <Route path="/ric-project" element={<RICProjectPage />} />
             <Route path="/resume/:id" element={<ResumePage />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/admin" element={<AdminPage />} />

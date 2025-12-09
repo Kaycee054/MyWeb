@@ -29,12 +29,12 @@ export function Navigation() {
         if (resumes && resumes.length > 0) {
           const dynamicNavItems = [
             { path: '/', icon: Home, label: 'Home' },
-            { path: '/ric-project', icon: Lightbulb, label: 'RIC Project' },
             ...resumes.map(resume => ({
               path: `/resume/${resume.slug}`,
               icon: Briefcase,
               label: resume.title
             })),
+            { path: '/ric-project', icon: Lightbulb, label: 'RIC Project' },
             { path: '/contact', icon: MessageSquare, label: 'Contact' },
           ]
           setNavItems(dynamicNavItems)

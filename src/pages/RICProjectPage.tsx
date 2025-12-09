@@ -1,10 +1,14 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { Layout } from '../components/Layout'
+import { RICInterestForm } from '../components/RICInterestForm'
+import { downloadPageAsPDF } from '../lib/pdfExport'
 import { ArrowRight, Zap, Briefcase, Users, Globe, Target, FileText, Mail } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
 export function RICProjectPage() {
+  const [showInterestForm, setShowInterestForm] = React.useState(false)
+
   const fadeInUp = {
     initial: { opacity: 0, y: 30 },
     whileInView: { opacity: 1, y: 0 },
@@ -34,19 +38,19 @@ export function RICProjectPage() {
 
   return (
     <Layout>
+      <RICInterestForm isOpen={showInterestForm} onClose={() => setShowInterestForm(false)} />
+
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 pb-16">
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 pb-16 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950">
         <div
-          className="absolute inset-0 z-0"
+          className="absolute inset-0 z-0 opacity-30"
           style={{
             backgroundImage: 'url(https://res.cloudinary.com/dgifshcbo/image/upload/v1765149317/20251109_0859_New_Video_simple_compose_01k9kk5dtpedza51t67bdakyd9_pomsmh.gif)',
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             backgroundAttachment: 'fixed',
           }}
-        >
-          <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/60 to-black/50"></div>
-        </div>
+        ></div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <motion.div
@@ -60,31 +64,34 @@ export function RICProjectPage() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.3 }}
-                className="text-sm font-semibold text-blue-400 mb-4 uppercase tracking-wider"
+                className="text-sm font-bold text-amber-400 mb-4 uppercase tracking-wider"
               >
                 Nigeria's Next-Generation Innovation Ecosystem
               </motion.p>
-              <h1 className="text-5xl sm:text-6xl font-bold text-white leading-tight mb-6">
-                Research & Innovation City
+              <h1 className="text-5xl sm:text-7xl font-bold text-white leading-tight mb-6">
+                Research &<br />Innovation Cluster
               </h1>
-              <p className="text-lg text-gray-300 leading-relaxed max-w-xl">
+              <p className="text-lg text-slate-300 leading-relaxed max-w-xl">
                 RIC is a next-generation ecosystem and mini-city dedicated to applied research, deep industry collaboration, and entrepreneurship. Our goal is to help Nigeria and Africa develop custom, high-impact solutions for real-world challenges, drive technological and industrial advancement, and build a resilient, knowledge-based economy anchored in strong intellectual property.
               </p>
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <button className="group bg-white text-black px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-all flex items-center justify-center sm:justify-start space-x-2">
+              <button
+                onClick={() => downloadPageAsPDF('RIC-Concept-Note.pdf')}
+                className="group bg-amber-500 hover:bg-amber-600 text-slate-950 px-8 py-4 rounded-lg font-bold transition-all flex items-center justify-center sm:justify-start space-x-2"
+              >
                 <FileText className="w-5 h-5" />
                 <span>Download Concept Note</span>
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </button>
-              <a
-                href="#partnership"
-                className="group border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white/10 transition-all flex items-center justify-center sm:justify-start space-x-2"
+              <button
+                onClick={() => setShowInterestForm(true)}
+                className="group border-2 border-blue-400 text-blue-400 px-8 py-4 rounded-lg font-bold hover:bg-blue-400/10 transition-all flex items-center justify-center sm:justify-start space-x-2"
               >
-                <span>Partner With Us</span>
+                <span>Express Interest</span>
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </a>
+              </button>
             </div>
           </motion.div>
 
@@ -94,8 +101,8 @@ export function RICProjectPage() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="relative"
           >
-            <div className="relative p-1 rounded-xl bg-gradient-to-br from-blue-500/30 via-transparent to-purple-500/20">
-              <div className="relative rounded-lg overflow-hidden backdrop-blur-xl bg-white/10 border border-white/20 shadow-2xl">
+            <div className="relative p-1 rounded-xl bg-gradient-to-br from-blue-500/20 via-transparent to-amber-500/10">
+              <div className="relative rounded-lg overflow-hidden backdrop-blur-xl bg-slate-800/40 border border-amber-400/30 shadow-2xl">
                 <img
                   src="https://res.cloudinary.com/dgifshcbo/image/upload/v1765149283/Screenshot_2025-11-08_at_12.36.09_yktqxp.png"
                   alt="RIC Concept"
@@ -108,7 +115,7 @@ export function RICProjectPage() {
       </section>
 
       {/* Vision & Mission Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-black to-gray-950">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-slate-900 to-slate-950">
         <div className="max-w-7xl mx-auto">
           <motion.h2
             {...fadeInUp}
@@ -122,7 +129,7 @@ export function RICProjectPage() {
               {...fadeInUp}
               className="lg:col-span-2"
             >
-              <div className="space-y-6 text-gray-300 text-lg leading-relaxed">
+              <div className="space-y-6 text-slate-300 text-lg leading-relaxed">
                 <p>
                   RIC is designed as an integrated research and innovation cluster that sits at the intersection of academia, industry, and government. We are not just building solutions; we are building and empowering <span className="text-white font-semibold">new and existing industries</span> with cutting-edge knowledge, technology, and talent.
                 </p>
@@ -130,19 +137,19 @@ export function RICProjectPage() {
                   <p className="font-semibold text-white">Our mission is to:</p>
                   <ul className="space-y-3">
                     <li className="flex items-start space-x-3">
-                      <span className="text-blue-400 font-bold mt-1">•</span>
+                      <span className="text-amber-400 font-bold mt-1">•</span>
                       <span>Enable Nigeria and Africa to develop <span className="text-white font-semibold">custom, innovative solutions</span> to local and global challenges.</span>
                     </li>
                     <li className="flex items-start space-x-3">
-                      <span className="text-blue-400 font-bold mt-1">•</span>
+                      <span className="text-amber-400 font-bold mt-1">•</span>
                       <span>Drive <span className="text-white font-semibold">technological and industrial advancement</span> across strategic sectors.</span>
                     </li>
                     <li className="flex items-start space-x-3">
-                      <span className="text-blue-400 font-bold mt-1">•</span>
+                      <span className="text-amber-400 font-bold mt-1">•</span>
                       <span>Build a <span className="text-white font-semibold">knowledge-based economy</span> with IP-driven value creation at its core.</span>
                     </li>
                     <li className="flex items-start space-x-3">
-                      <span className="text-blue-400 font-bold mt-1">•</span>
+                      <span className="text-amber-400 font-bold mt-1">•</span>
                       <span>Create a pipeline of <span className="text-white font-semibold">world-class researchers, founders, and operators</span> who can compete and collaborate globally.</span>
                     </li>
                   </ul>
@@ -162,10 +169,10 @@ export function RICProjectPage() {
                 <motion.div
                   key={idx}
                   variants={itemVariants}
-                  className="bg-gradient-to-br from-blue-900/30 to-transparent border border-blue-500/30 rounded-lg p-6 hover:border-blue-400/50 transition-all"
+                  className="bg-gradient-to-br from-blue-500/10 to-transparent border border-amber-400/30 rounded-lg p-6 hover:border-amber-400/60 transition-all"
                 >
                   <h4 className="text-white font-bold mb-2">{item.title}</h4>
-                  <p className="text-gray-300 text-sm leading-relaxed">{item.desc}</p>
+                  <p className="text-slate-400 text-sm leading-relaxed">{item.desc}</p>
                 </motion.div>
               ))}
             </motion.div>
@@ -174,7 +181,7 @@ export function RICProjectPage() {
       </section>
 
       {/* What Makes RIC Different */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-black">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-950">
         <div className="max-w-7xl mx-auto">
           <motion.h2
             {...fadeInUp}
@@ -212,13 +219,13 @@ export function RICProjectPage() {
                 <motion.div
                   key={idx}
                   variants={itemVariants}
-                  className="group relative bg-gradient-to-br from-gray-900 to-black border border-gray-800 rounded-xl p-8 hover:border-blue-500/50 transition-all duration-300 overflow-hidden"
+                  className="group relative bg-gradient-to-br from-slate-800 to-slate-900 border border-amber-400/20 rounded-xl p-8 hover:border-amber-400/50 transition-all duration-300 overflow-hidden"
                 >
-                  <div className="absolute inset-0 bg-gradient-to-br from-blue-500/0 to-blue-500/0 group-hover:from-blue-500/10 group-hover:to-blue-500/5 transition-all duration-300"></div>
+                  <div className="absolute inset-0 bg-gradient-to-br from-amber-500/0 to-blue-500/0 group-hover:from-amber-500/5 group-hover:to-blue-500/5 transition-all duration-300"></div>
                   <div className="relative z-10">
-                    <Icon className="w-12 h-12 text-blue-400 mb-4" />
+                    <Icon className="w-12 h-12 text-amber-400 mb-4" />
                     <h3 className="text-xl font-bold text-white mb-4">{card.title}</h3>
-                    <p className="text-gray-400 leading-relaxed">{card.desc}</p>
+                    <p className="text-slate-400 leading-relaxed">{card.desc}</p>
                   </div>
                 </motion.div>
               )
@@ -228,7 +235,7 @@ export function RICProjectPage() {
       </section>
 
       {/* Strategic Impact Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-black to-gray-950">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-slate-950 to-slate-900">
         <div className="max-w-7xl mx-auto">
           <motion.h2
             {...fadeInUp}
@@ -239,7 +246,7 @@ export function RICProjectPage() {
 
           <motion.p
             {...fadeInUp}
-            className="text-center text-gray-300 text-lg max-w-3xl mx-auto mb-16 leading-relaxed"
+            className="text-center text-slate-300 text-lg max-w-3xl mx-auto mb-16 leading-relaxed"
           >
             RIC aims to position Nigeria—and by extension Africa—as a <span className="text-white font-semibold">serious stakeholder on the global innovation stage</span>, while strengthening local industrial capacity and social resilience.
           </motion.p>
@@ -282,17 +289,17 @@ export function RICProjectPage() {
                 <motion.div
                   key={idx}
                   variants={itemVariants}
-                  className="bg-gradient-to-r from-gray-900 to-black border border-gray-800 rounded-xl p-8 hover:border-blue-500/50 transition-all"
+                  className="bg-gradient-to-r from-slate-800 to-slate-900 border border-amber-400/20 rounded-xl p-8 hover:border-amber-400/50 transition-all"
                 >
                   <div className="flex items-start gap-6">
-                    <Icon className="w-10 h-10 text-blue-400 flex-shrink-0 mt-1" />
+                    <Icon className="w-10 h-10 text-amber-400 flex-shrink-0 mt-1" />
                     <div className="flex-grow">
                       <h3 className="text-2xl font-bold text-white mb-4">{section.title}</h3>
                       <ul className="space-y-3">
                         {section.points.map((point, pidx) => (
                           <li key={pidx} className="flex items-start space-x-3">
-                            <span className="text-blue-400 font-bold mt-1">▸</span>
-                            <span className="text-gray-300 leading-relaxed">{point}</span>
+                            <span className="text-amber-400 font-bold mt-1">▸</span>
+                            <span className="text-slate-300 leading-relaxed">{point}</span>
                           </li>
                         ))}
                       </ul>
@@ -306,7 +313,7 @@ export function RICProjectPage() {
       </section>
 
       {/* How the Ecosystem Works */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-black">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-950">
         <div className="max-w-7xl mx-auto">
           <motion.h2
             {...fadeInUp}
@@ -335,16 +342,16 @@ export function RICProjectPage() {
                 className="relative flex gap-8 group"
               >
                 <div className="flex flex-col items-center">
-                  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center text-white font-bold text-xl group-hover:scale-110 transition-transform">
+                  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-amber-500 to-amber-600 flex items-center justify-center text-slate-950 font-bold text-xl group-hover:scale-110 transition-transform">
                     {step.num}
                   </div>
                   {idx < 4 && (
-                    <div className="w-1 h-12 bg-gradient-to-b from-blue-500/50 to-transparent"></div>
+                    <div className="w-1 h-12 bg-gradient-to-b from-amber-500/50 to-transparent"></div>
                   )}
                 </div>
                 <div className="flex-grow pt-2 pb-4">
                   <h3 className="text-xl font-bold text-white mb-2">{step.title}</h3>
-                  <p className="text-gray-400 leading-relaxed">{step.desc}</p>
+                  <p className="text-slate-400 leading-relaxed">{step.desc}</p>
                 </div>
               </motion.div>
             ))}
@@ -353,7 +360,7 @@ export function RICProjectPage() {
       </section>
 
       {/* Who RIC Serves */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-black to-gray-950">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-slate-950 to-slate-900">
         <div className="max-w-7xl mx-auto">
           <motion.h2
             {...fadeInUp}
@@ -396,11 +403,11 @@ export function RICProjectPage() {
                 <motion.div
                   key={idx}
                   variants={itemVariants}
-                  className="bg-gradient-to-br from-gray-900 to-black border border-gray-800 rounded-xl p-6 hover:border-blue-500/50 hover:shadow-xl hover:shadow-blue-500/10 transition-all"
+                  className="bg-gradient-to-br from-slate-800 to-slate-900 border border-amber-400/20 rounded-xl p-6 hover:border-amber-400/50 hover:shadow-xl hover:shadow-amber-400/10 transition-all"
                 >
-                  <Icon className="w-10 h-10 text-blue-400 mb-4" />
+                  <Icon className="w-10 h-10 text-amber-400 mb-4" />
                   <h3 className="text-lg font-bold text-white mb-3">{stakeholder.title}</h3>
-                  <p className="text-gray-400 text-sm leading-relaxed">{stakeholder.desc}</p>
+                  <p className="text-slate-400 text-sm leading-relaxed">{stakeholder.desc}</p>
                 </motion.div>
               )
             })}
@@ -409,7 +416,7 @@ export function RICProjectPage() {
       </section>
 
       {/* Call to Action Section */}
-      <section id="partnership" className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-gray-950 via-black to-gray-950">
+      <section id="partnership" className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-900 via-slate-950 to-slate-900">
         <div className="max-w-4xl mx-auto text-center">
           <motion.h2
             {...fadeInUp}
@@ -420,7 +427,7 @@ export function RICProjectPage() {
 
           <motion.div
             {...fadeInUp}
-            className="mb-12 space-y-6 text-gray-300 text-lg leading-relaxed"
+            className="mb-12 space-y-6 text-slate-300 text-lg leading-relaxed"
           >
             <p>
               RIC is still in its <span className="text-white font-semibold">ideation and early formulation</span> phase, but the vision is clear: a world-class, African-rooted research and innovation city that creates real economic and social value.
@@ -434,17 +441,20 @@ export function RICProjectPage() {
             {...fadeInUp}
             className="flex flex-col sm:flex-row gap-6 justify-center"
           >
-            <Link
-              to="/contact"
-              className="group bg-white text-black px-10 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-all flex items-center justify-center space-x-2"
+            <button
+              onClick={() => setShowInterestForm(true)}
+              className="group bg-amber-500 hover:bg-amber-600 text-slate-950 px-10 py-4 rounded-lg font-bold transition-all flex items-center justify-center space-x-2"
             >
               <Mail className="w-5 h-5" />
-              <span>Express Interest / Contact Us</span>
+              <span>Express Interest</span>
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </Link>
-            <button className="group border-2 border-white text-white px-10 py-4 rounded-lg font-semibold hover:bg-white/10 transition-all flex items-center justify-center space-x-2">
+            </button>
+            <button
+              onClick={() => downloadPageAsPDF('RIC-Concept-Deck.pdf')}
+              className="group border-2 border-blue-400 text-blue-400 px-10 py-4 rounded-lg font-bold hover:bg-blue-400/10 transition-all flex items-center justify-center space-x-2"
+            >
               <FileText className="w-5 h-5" />
-              <span>Request Concept Deck</span>
+              <span>Download Concept Deck</span>
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </button>
           </motion.div>

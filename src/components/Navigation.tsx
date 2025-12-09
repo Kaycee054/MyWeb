@@ -8,10 +8,10 @@ export function Navigation() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false)
   const [navItems, setNavItems] = React.useState([
     { path: '/', icon: Home, label: 'Home' },
-    { path: '/ric-project', icon: Lightbulb, label: 'RIC Project' },
     { path: '/resume/it-project-manager', icon: Briefcase, label: 'IT Project Manager' },
     { path: '/resume/media-producer', icon: User, label: 'Media Producer' },
     { path: '/resume/business-development', icon: Briefcase, label: 'Business Development' },
+    { path: '/ric-project', icon: Lightbulb, label: 'RIC Project' },
     { path: '/contact', icon: MessageSquare, label: 'Contact' },
   ])
   const location = useLocation()

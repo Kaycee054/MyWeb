@@ -64,7 +64,7 @@ export function RICInterestForm({ isOpen, onClose }: RICInterestFormProps) {
         className="w-full max-w-md bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 border border-amber-500/30 rounded-xl shadow-2xl p-8"
       >
         <div className="flex items-center justify-between mb-6">
-          <h2 className="text-2xl font-bold text-white">Express Interest</h2>
+          <h2 className="text-2xl font-bold text-white">Share your thoughts and contributions</h2>
           <button
             onClick={onClose}
             className="text-gray-400 hover:text-white transition-colors"

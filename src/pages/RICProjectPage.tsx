@@ -89,7 +89,7 @@ export function RICProjectPage() {
                 onClick={() => setShowInterestForm(true)}
                 className="group border-2 border-blue-400 text-blue-400 px-8 py-4 rounded-lg font-bold hover:bg-blue-400/10 transition-all flex items-center justify-center sm:justify-start space-x-2"
               >
-                <span>Express Interest</span>
+                <span>Contribute/ Express Interest</span>
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </button>
             </div>
@@ -446,7 +446,7 @@ export function RICProjectPage() {
               className="group bg-amber-500 hover:bg-amber-600 text-slate-950 px-10 py-4 rounded-lg font-bold transition-all flex items-center justify-center space-x-2"
             >
               <Mail className="w-5 h-5" />
-              <span>Express Interest</span>
+              <span>Contribute/ Express Interest</span>
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </button>
             <button

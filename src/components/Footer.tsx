@@ -44,7 +44,7 @@ export function Footer() {
     {
       name: 'WhatsApp',
       icon: Phone,
-      url: 'https://wa.me/79999999999',
+      url: 'https://wa.me/+79509699546',
       color: 'hover:text-green-500',
       verified: true
     }
@@ -89,7 +89,7 @@ export function Footer() {
                 <div className="flex items-center space-x-3 text-gray-400">
                   <Phone className="w-4 h-4" />
                   <a href="tel:+79999999999" className="hover:text-white transition-colors">
-                    +7 (999) 999-99-99
+                    +7 (950) 969-95-46
                   </a>
                 </div>
               </div>

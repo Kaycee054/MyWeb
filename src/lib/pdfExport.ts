@@ -38,16 +38,20 @@ export async function downloadPageAsPDF(filename: string = 'document.pdf') {
     const content = document.querySelector('main') || document.body
 
     const opt = {
-      margin: [15, 15, 15, 15],
+      margin: [10, 10, 10, 10],
       filename: filename,
-      image: { type: 'jpeg', quality: 0.95 },
+      image: { type: 'jpeg', quality: 0.98 },
       html2canvas: {
         scale: 2,
         useCORS: true,
         logging: false,
         letterRendering: true,
         allowTaint: true,
-        backgroundColor: '#0f172a'
+        backgroundColor: '#0f172a',
+        scrollY: -window.scrollY,
+        scrollX: -window.scrollX,
+        windowWidth: content.scrollWidth,
+        windowHeight: content.scrollHeight,
       },
       jsPDF: {
         unit: 'mm',
@@ -56,10 +60,8 @@ export async function downloadPageAsPDF(filename: string = 'document.pdf') {
         compress: true
       },
       pagebreak: {
-        mode: ['avoid-all', 'css', 'legacy'],
-        before: '.page-break-before',
-        after: '.page-break-after',
-        avoid: ['img', 'h1', 'h2', 'h3']
+        mode: ['avoid-all', 'css'],
+        avoid: ['tr', 'img']
       }
     }
 

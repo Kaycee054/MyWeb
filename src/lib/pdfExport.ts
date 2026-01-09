@@ -71,8 +71,8 @@ export async function downloadPageAsPDF(filename: string = 'document.pdf') {
       },
       jsPDF: {
         unit: 'mm',
-        format: [135, 240],
-        orientation: 'portrait',
+        format: [297, 167],
+        orientation: 'landscape',
         compress: true
       },
       pagebreak: {

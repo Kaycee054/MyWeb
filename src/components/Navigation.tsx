@@ -11,6 +11,7 @@ export function Navigation() {
     { path: '/resume/it-project-manager', icon: Briefcase, label: 'IT Project Manager' },
     { path: '/resume/media-producer', icon: User, label: 'Media Producer' },
     { path: '/resume/business-development', icon: Briefcase, label: 'Business Development' },
+    { path: '/resume/systems-integration', icon: Briefcase, label: 'Systems Integration' },
     { path: '/ric-project', icon: Lightbulb, label: 'RIC Project' },
     { path: '/contact', icon: MessageSquare, label: 'Contact' },
   ])
@@ -27,16 +28,39 @@ export function Navigation() {
           .order('display_order', { ascending: true, nullsLast: true })
 
         if (resumes && resumes.length > 0) {
-          const dynamicNavItems = [
-            { path: '/', icon: Home, label: 'Home' },
-            ...resumes.map(resume => ({
-              path: `/resume/${resume.slug}`,
-              icon: Briefcase,
-              label: resume.title
-            })),
-            { path: '/ric-project', icon: Lightbulb, label: 'RIC Project' },
-            { path: '/contact', icon: MessageSquare, label: 'Contact' },
-          ]
+          const resumeItems = resumes.map(resume => ({
+            path: `/resume/${resume.slug}`,
+            icon: Briefcase,
+            label: resume.title
+          }))
+
+          const ricItem = { path: '/ric-project', icon: Lightbulb, label: 'RIC Project' }
+          const contactItem = { path: '/contact', icon: MessageSquare, label: 'Contact' }
+
+          const businessDevIndex = resumeItems.findIndex(item =>
+            item.label.toLowerCase().includes('business development') ||
+            item.label.toLowerCase().includes('systems integration')
+          )
+
+          let dynamicNavItems = [{ path: '/', icon: Home, label: 'Home' }]
+
+          if (businessDevIndex >= 0) {
+            dynamicNavItems = [
+              ...dynamicNavItems,
+              ...resumeItems.slice(0, businessDevIndex + 1),
+              ricItem,
+              ...resumeItems.slice(businessDevIndex + 1),
+              contactItem
+            ]
+          } else {
+            dynamicNavItems = [
+              ...dynamicNavItems,
+              ...resumeItems,
+              ricItem,
+              contactItem
+            ]
+          }
+
           setNavItems(dynamicNavItems)
         }
       } catch (error) {

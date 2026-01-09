@@ -44,6 +44,7 @@ export function RICProjectPage() {
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 pb-16 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950">
         <div
           className="absolute inset-0 z-0 opacity-30"
+          data-hide-in-pdf="true"
           style={{
             backgroundImage: 'url(https://res.cloudinary.com/dgifshcbo/image/upload/v1765149317/20251109_0859_New_Video_simple_compose_01k9kk5dtpedza51t67bdakyd9_pomsmh.gif)',
             backgroundSize: 'cover',

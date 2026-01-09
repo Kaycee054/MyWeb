@@ -37,8 +37,24 @@ export async function downloadPageAsPDF(filename: string = 'document.pdf') {
 
     const content = document.querySelector('main') || document.body
 
+    const sections = content.querySelectorAll('section')
+    sections.forEach((section, index) => {
+      if (index > 0) {
+        section.classList.add('pdf-page-break')
+      }
+    })
+
+    const style = document.createElement('style')
+    style.textContent = `
+      .pdf-page-break {
+        page-break-before: always !important;
+        break-before: page !important;
+      }
+    `
+    document.head.appendChild(style)
+
     const opt = {
-      margin: [10, 10, 10, 10],
+      margin: [8, 8, 8, 8],
       filename: filename,
       image: { type: 'jpeg', quality: 0.98 },
       html2canvas: {
@@ -55,18 +71,24 @@ export async function downloadPageAsPDF(filename: string = 'document.pdf') {
       },
       jsPDF: {
         unit: 'mm',
-        format: 'a4',
+        format: [135, 240],
         orientation: 'portrait',
         compress: true
       },
       pagebreak: {
-        mode: ['avoid-all', 'css'],
-        avoid: ['tr', 'img']
+        mode: ['css', 'legacy'],
+        before: '.pdf-page-break',
+        avoid: ['img']
       }
     }
 
     const html2pdf = (window as any).html2pdf
     await html2pdf().set(opt).from(content).save()
+
+    sections.forEach((section) => {
+      section.classList.remove('pdf-page-break')
+    })
+    document.head.removeChild(style)
 
     originalDisplayValues.forEach(({ element, display }) => {
       (element as HTMLElement).style.display = display

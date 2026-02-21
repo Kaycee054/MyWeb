@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import { useForm } from 'react-hook-form'
 import { Lock, Eye, EyeOff } from 'lucide-react'
 import { useAuth } from '../contexts/AuthContext'
+import { PasswordResetRequest } from './PasswordResetRequest'
 import { supabase } from '../lib/supabase'
 
 interface LoginForm {
@@ -15,6 +16,7 @@ export function AdminLogin() {
   const [error, setError] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const [showSetup, setShowSetup] = useState(false)
+  const [showReset, setShowReset] = useState(false)
   const { signIn } = useAuth()
   const { register, handleSubmit, formState: { errors } } = useForm<LoginForm>()
 
@@ -58,6 +60,10 @@ export function AdminLogin() {
     } finally {
       setIsLoading(false)
     }
+  }
+
+  if (showReset) {
+    return <PasswordResetRequest onBack={() => setShowReset(false)} />
   }
 
   return (
@@ -140,14 +146,32 @@ export function AdminLogin() {
           </button>
         </form>
 
-        <div className="mt-6 text-center">
+        <div className="mt-6 space-y-4 text-center">
+          {!showSetup && (
+            <button
+              type="button"
+              onClick={() => setShowReset(true)}
+              className="block w-full text-gray-400 hover:text-white text-sm underline"
+            >
+              Forgot your password?
+            </button>
+          )}
           <button
             type="button"
             onClick={() => setShowSetup(!showSetup)}
-            className={`text-gray-400 hover:text-white text-sm underline ${showSetup ? '' : 'hidden'}`}
+            className={`${showSetup ? 'block' : 'hidden'} w-full text-gray-400 hover:text-white text-sm underline`}
           >
             Already have an account? Sign in
           </button>
+          {!showSetup && (
+            <button
+              type="button"
+              onClick={() => setShowSetup(true)}
+              className="block w-full text-gray-400 hover:text-white text-sm underline"
+            >
+              Create an admin account
+            </button>
+          )}
         </div>
       </motion.div>
     </div>

@@ -1,9 +1,10 @@
-import React, { lazy, Suspense } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import React, { lazy, Suspense, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom'
 import { AuthProvider, useAuth } from './contexts/AuthContext'
 import { Navigation } from './components/Navigation'
 import { Footer } from './components/Footer'
 import { HomePage } from './pages/HomePage'
+import { trackPageView } from './lib/visitorTracking'
 
 const ResumePage = lazy(() => import('./pages/ResumePage').then(module => ({ default: module.ResumePage })))
 const ContactPage = lazy(() => import('./pages/ContactPage').then(module => ({ default: module.ContactPage })))
@@ -73,6 +74,11 @@ class ErrorBoundary extends React.Component<
 
 function AppContent() {
   const { loading } = useAuth();
+  const location = useLocation();
+
+  useEffect(() => {
+    trackPageView(location.pathname);
+  }, [location.pathname]);
 
   if (loading) {
     return <LoadingSpinner />;

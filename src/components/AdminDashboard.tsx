@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
-import { LogOut, Plus, Settings, MessageSquare, Briefcase, BarChart3, FolderOpen, Upload, Users } from 'lucide-react'
+import { LogOut, Plus, Settings, MessageSquare, Briefcase, BarChart3, FolderOpen, Upload, Users, Globe } from 'lucide-react'
 import { useAuth } from '../contexts/AuthContext'
 import { ResumeManager } from './ResumeManager'
 import { ProjectManager } from './ProjectManager'
@@ -8,8 +8,9 @@ import { KanbanBoard } from './KanbanBoard'
 import { Analytics } from './Analytics'
 import { DataMigration } from './DataMigration'
 import { RICSubmissions } from './RICSubmissions'
+import { VisitorAnalytics } from './VisitorAnalytics'
 
-type TabType = 'import' | 'resumes' | 'projects' | 'messages' | 'analytics' | 'ric'
+type TabType = 'import' | 'resumes' | 'projects' | 'messages' | 'analytics' | 'ric' | 'visitors'
 
 export function AdminDashboard() {
   const [activeTab, setActiveTab] = useState<TabType>('import')
@@ -20,6 +21,7 @@ export function AdminDashboard() {
     { id: 'resumes' as TabType, label: 'Resumes', icon: Briefcase },
     { id: 'projects' as TabType, label: 'Projects', icon: FolderOpen },
     { id: 'messages' as TabType, label: 'Messages', icon: MessageSquare },
+    { id: 'visitors' as TabType, label: 'Visitors', icon: Globe },
     { id: 'ric' as TabType, label: 'RIC Submissions', icon: Users },
     { id: 'analytics' as TabType, label: 'Analytics', icon: BarChart3 },
   ]
@@ -86,6 +88,7 @@ export function AdminDashboard() {
         {activeTab === 'resumes' && <ResumeManager />}
         {activeTab === 'projects' && <ProjectManager />}
         {activeTab === 'messages' && <KanbanBoard />}
+        {activeTab === 'visitors' && <VisitorAnalytics />}
         {activeTab === 'ric' && <RICSubmissions />}
         {activeTab === 'analytics' && <Analytics />}
       </motion.div>

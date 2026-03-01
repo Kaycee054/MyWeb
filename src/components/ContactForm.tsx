@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import { useForm } from 'react-hook-form'
 import { Send, CheckCircle } from 'lucide-react'
 import { supabase } from '../lib/supabase'
+import { trackVisitorInfo } from '../lib/visitorTracking'
 
 interface ContactFormProps {
   resumeId?: string
@@ -22,8 +23,10 @@ export function ContactForm({ resumeId, title }: ContactFormProps) {
 
   const onSubmit = async (data: FormData) => {
     setIsSubmitting(true)
-    
+
     try {
+      trackVisitorInfo(data.name, data.email)
+
       // Insert message
       const { data: messageData, error: messageError } = await supabase
         .from('messages')
@@ -60,7 +63,6 @@ export function ContactForm({ resumeId, title }: ContactFormProps) {
 
         if (ticketError) {
           console.error('Error creating ticket:', ticketError)
-          // Don't fail the whole operation if ticket creation fails
         }
       }
 
@@ -68,7 +70,6 @@ export function ContactForm({ resumeId, title }: ContactFormProps) {
       reset()
     } catch (error) {
       console.error('Error submitting form:', error)
-      // Still show success to user even if some parts failed
       setIsSubmitted(true)
       reset()
     } finally {

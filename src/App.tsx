@@ -1,7 +1,6 @@
 import React, { lazy, Suspense, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom'
 import { AuthProvider, useAuth } from './contexts/AuthContext'
-import { Navigation } from './components/Navigation'
 import { Footer } from './components/Footer'
 import { HomePage } from './pages/HomePage'
 import { trackPageView } from './lib/visitorTracking'
@@ -86,7 +85,6 @@ function AppContent() {
 
   return (
     <div className="min-h-screen bg-black text-white">
-      <Navigation />
       <Suspense fallback={<LoadingSpinner />}>
         <main role="main">
           <Routes>

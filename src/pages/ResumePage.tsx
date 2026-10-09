@@ -823,7 +823,7 @@ export function ResumePage() {
   if (loading) {
     return (
       <Layout>
-        <div className="pt-20 px-4 sm:px-6 lg:px-8">
+        <div className="px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto">
             <div className="animate-pulse">
               <div className="h-8 bg-gray-800 rounded w-1/3 mb-4" />
@@ -848,7 +848,7 @@ export function ResumePage() {
   if (!resume) {
     return (
       <Layout>
-        <div className="pt-20 px-4 sm:px-6 lg:px-8 text-center">
+        <div className="px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl font-bold text-white mb-4">Resume Not Found</h1>
           <p className="text-gray-400">The requested resume could not be found.</p>
         </div>
@@ -858,7 +858,7 @@ export function ResumePage() {
 
   return (
     <Layout>
-      <div className="pt-20 px-4 sm:px-6 lg:px-8">
+      <div className="px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
           {/* Header */}
           <motion.div

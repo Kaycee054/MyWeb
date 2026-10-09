@@ -1,6 +1,6 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import { Mail, Phone, MapPin, Linkedin, Github, Instagram, MessageCircle, Youtube, ExternalLink } from 'lucide-react'
+import { Mail, MapPin, Linkedin, Github, Instagram, MessageCircle, Youtube, ExternalLink } from 'lucide-react'
 
 export function Footer() {
   const currentYear = new Date().getFullYear()
@@ -11,43 +11,31 @@ export function Footer() {
       icon: Linkedin,
       url: 'https://linkedin.com/in/kelechi-ekpemiro',
       color: 'hover:text-blue-400',
-      verified: true
     },
     {
       name: 'GitHub',
       icon: Github,
-      url: 'https://github.com/kelechi-ekpemiro',
+      url: 'https://github.com/kcekpemiro',
       color: 'hover:text-gray-300',
-      verified: true
     },
     {
       name: 'Instagram',
       icon: Instagram,
-      url: 'https://instagram.com/kelechi.ekpemiro',
+      url: 'https://instagram.com/kcekpemiro',
       color: 'hover:text-pink-400',
-      verified: true
     },
     {
       name: 'Telegram',
       icon: MessageCircle,
-      url: 'https://t.me/kelechi_ekpemiro',
+      url: 'https://t.me/kcekpemiro',
       color: 'hover:text-blue-500',
-      verified: true
     },
     {
       name: 'YouTube',
       icon: Youtube,
-      url: 'https://youtube.com/@kelechiekpemiro',
+      url: 'https://youtube.com/@kcekpemiro',
       color: 'hover:text-red-500',
-      verified: true
     },
-    {
-      name: 'WhatsApp',
-      icon: Phone,
-      url: 'https://wa.me/+79509699546',
-      color: 'hover:text-green-500',
-      verified: true
-    }
   ]
 
   const quickLinks = [
@@ -69,11 +57,7 @@ export function Footer() {
               viewport={{ once: true }}
             >
               <h3 className="text-2xl font-bold text-white mb-4">Kelechi Ekpemiro</h3>
-              <p className="text-gray-400 mb-6 max-w-md">
-                Engineer, Project Manager, and Innovator. Turning ideas into systems, 
-                stories, and sustainable businesses. Based in Moscow, open to global opportunities.
-              </p>
-              
+
               {/* Contact Info */}
               <div className="space-y-2 mb-6">
                 <div className="flex items-center space-x-3 text-gray-400">
@@ -82,14 +66,8 @@ export function Footer() {
                 </div>
                 <div className="flex items-center space-x-3 text-gray-400">
                   <Mail className="w-4 h-4" />
-                  <a href="mailto:contact@kelechiekpemiro.com" className="hover:text-white transition-colors">
-                    contact@kelechiekpemiro.com
-                  </a>
-                </div>
-                <div className="flex items-center space-x-3 text-gray-400">
-                  <Phone className="w-4 h-4" />
-                  <a href="tel:+79999999999" className="hover:text-white transition-colors">
-                    +7 (950) 969-95-46
+                  <a href="mailto:ekpemirokelechi@gmail.com" className="hover:text-white transition-colors">
+                    ekpemirokelechi@gmail.com
                   </a>
                 </div>
               </div>
@@ -109,11 +87,6 @@ export function Footer() {
                       aria-label={`Follow Kelechi on ${social.name}`}
                     >
                       <Icon className="w-5 h-5" />
-                      {social.verified && (
-                        <div className="absolute -top-1 -right-1 w-3 h-3 bg-green-500 rounded-full opacity-0 group-hover:opacity-100 transition-opacity">
-                          <div className="w-full h-full bg-green-400 rounded-full animate-pulse" />
-                        </div>
-                      )}
                     </a>
                   )
                 })}
@@ -178,20 +151,20 @@ export function Footer() {
             >
               © {currentYear} Kelechi Ekpemiro. All rights reserved.
             </motion.p>
-            
+
             <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               className="flex flex-wrap gap-6 text-sm text-gray-400"
             >
-              <button 
+              <button
                 onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
                 className="hover:text-white transition-colors"
               >
                 Back to Top
               </button>
-              <a href="mailto:contact@kelechiekpemiro.com" className="hover:text-white transition-colors">
+              <a href="mailto:ekpemirokelechi@gmail.com" className="hover:text-white transition-colors">
                 Quick Contact
               </a>
               <a href="/Kelechi_Ekpemiro_CV2025.pdf" target="_blank" className="hover:text-white transition-colors">

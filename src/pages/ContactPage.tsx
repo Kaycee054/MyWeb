@@ -1,7 +1,7 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { useSEO } from '../hooks/useSEO'
-import { Mail, MapPin, Linkedin } from 'lucide-react'
+import { Mail, MapPin, Linkedin, MessageCircle, Instagram, Youtube, Github } from 'lucide-react'
 import { Layout } from '../components/Layout'
 import { ContactForm } from '../components/ContactForm'
 
@@ -23,6 +23,12 @@ export function ContactPage() {
       href: 'mailto:ekpemirokelechi@gmail.com'
     },
     {
+      icon: MessageCircle,
+      label: 'Telegram',
+      value: '@kcekpemiro',
+      href: 'https://t.me/kcekpemiro'
+    },
+    {
       icon: MapPin,
       label: 'Location',
       value: 'Moscow, Russia',
@@ -31,14 +37,32 @@ export function ContactPage() {
     {
       icon: Linkedin,
       label: 'LinkedIn',
-      value: 'linkedin.com/in/kelechi-ekpemiro-a78512154',
-      href: 'https://linkedin.com/in/kelechi-ekpemiro-a78512154'
+      value: 'linkedin.com/in/kelechi-ekpemiro',
+      href: 'https://linkedin.com/in/kelechi-ekpemiro'
+    },
+    {
+      icon: Instagram,
+      label: 'Instagram',
+      value: '@kcekpemiro',
+      href: 'https://instagram.com/kcekpemiro'
+    },
+    {
+      icon: Youtube,
+      label: 'YouTube',
+      value: '@kcekpemiro',
+      href: 'https://youtube.com/@kcekpemiro'
+    },
+    {
+      icon: Github,
+      label: 'GitHub',
+      value: 'github.com/kcekpemiro',
+      href: 'https://github.com/kcekpemiro'
     }
   ]
 
   return (
     <Layout>
-      <div className="pt-20 px-4 sm:px-6 lg:px-8">
+      <div className="px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}

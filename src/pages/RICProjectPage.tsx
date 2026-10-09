@@ -41,7 +41,7 @@ export function RICProjectPage() {
       <RICInterestForm isOpen={showInterestForm} onClose={() => setShowInterestForm(false)} />
 
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 pb-16 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950">
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden pb-16 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950">
         <div
           className="absolute inset-0 z-0 opacity-30"
           data-hide-in-pdf="true"

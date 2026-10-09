@@ -13,7 +13,7 @@ export function AdminPage() {
   if (loading) {
     return (
       <Layout>
-        <div className="pt-20 px-4 sm:px-6 lg:px-8 flex items-center justify-center min-h-screen">
+        <div className="px-4 sm:px-6 lg:px-8 flex items-center justify-center min-h-screen">
           <div className="w-8 h-8 border-2 border-white border-t-transparent rounded-full animate-spin" />
         </div>
       </Layout>
@@ -23,7 +23,7 @@ export function AdminPage() {
 
   return (
     <Layout>
-      <div className="pt-20 px-4 sm:px-6 lg:px-8">
+      <div className="px-4 sm:px-6 lg:px-8">
         {user ? <AdminDashboard /> : <AdminLogin />}
       </div>
     </Layout>

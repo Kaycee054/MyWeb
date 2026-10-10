@@ -42,16 +42,28 @@ export function AboutMe() {
               transition={{ duration: 0.6, delay: 0.3 }}
             >
               <h2 className="text-3xl sm:text-4xl font-bold text-white mb-8">
-                About Me
+                About Kelechi
               </h2>
-              
+
               <div className="space-y-6 text-gray-300 leading-relaxed">
                 <p>
-                  I'm <strong className="text-white">Kelechi Ekpemiro</strong>, a 25-year-old Nigerian engineer and project manager based in Moscow. Since 2018, I've pursued higher education in Russia on full scholarships, graduating with honors in Information Science & Computer Engineering and completing my M.Sc. in Engineering Systems at Skoltech.
+                  <strong className="text-white">Kelechi Ekpemiro</strong> is a Nigerian engineer, project manager, and media producer based in Moscow. Since arriving in Russia in 2018 on a full scholarship, he has built a multi-disciplinary career spanning IT project management, AI and robotics research, media production, and business development across international markets.
                 </p>
-                
+
                 <p>
-                  I'm an active PMI member, cofounder of <strong className="text-white">StraightenUp</strong> (AI + wearables, Skolkovo Foundation), and I run a personal media brand delivering commercial, creative, and social projects. I've also worked in fintech and tourism startups, driving growth through technology and business development.
+                  He graduated with honors in Information Science &amp; Computer Engineering from Kazan National Research Technological University (GPA 3.8/4.0), including an exchange semester at VSB – Technical University of Ostrava in the Czech Republic. He later completed his M.Sc. in Engineering Systems at the Skolkovo Institute of Science and Technology (Skoltech), where his research centered on computer vision, autonomous UAV systems, and AI-driven inspection platforms.
+                </p>
+
+                <p>
+                  Kelechi is an active member of the Project Management Institute (PMI) and a Google-certified Project Management Professional. He is a co-founder of <strong className="text-white">StraightenUp</strong>, an AI and wearables startup focused on posture monitoring and correction, admitted to the Skolkovo Foundation ecosystem. He also founded and runs <strong className="text-white">Focus Films</strong>, a media production brand delivering videography, live broadcasting, and post-production services for commercial, creative, and social projects.
+                </p>
+
+                <p>
+                  His professional experience spans roles in fintech and SME systems integration — including sales and integrations management for an automated accounting platform serving the UAE market — as well as marketing and data analytics work in Nigeria. He has led research on information flow in automated control systems, developed simulation frameworks for technology development programs, and contributed to projects ranging from aerial search-and-rescue AI to automated aircraft inspection systems.
+                </p>
+
+                <p>
+                  A Christian, Kelechi is driven by the quiet conviction that it is possible to build meaningfully at any scale — and to create abundance ethically, without compromise.
                 </p>
               </div>
 
@@ -67,7 +79,7 @@ export function AboutMe() {
                   <MapPin className="w-5 h-5 text-blue-400" />
                   <span className="text-gray-300">Moscow, Russia</span>
                 </motion.div>
-                
+
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -78,7 +90,7 @@ export function AboutMe() {
                   <GraduationCap className="w-5 h-5 text-green-400" />
                   <span className="text-gray-300">Skoltech M.Sc.</span>
                 </motion.div>
-                
+
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -86,10 +98,10 @@ export function AboutMe() {
                   transition={{ duration: 0.6, delay: 0.6 }}
                   className="flex items-center space-x-3"
                 >
-                  <Award className="w-5 h-5 text-purple-400" />
+                  <Award className="w-5 h-5 text-blue-400" />
                   <span className="text-gray-300">PMI Member</span>
                 </motion.div>
-                
+
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}

@@ -9,7 +9,7 @@ export function HomePage() {
   // SEO optimization
   useSEO({
     title: 'Kelechi Ekpemiro | Project Manager | Media Producer | Business Development Consultant',
-    description: 'Official website of Kelechi Ekpemiro — Engineer, Project Manager, and Innovator. Explore resumes in Project Management, Media Production, and Business Development. Based in Moscow, open to global opportunities.',
+    description: 'Official website of Kelechi Ekpemiro, Engineer, Project Manager, and Innovator. Explore resumes in Project Management, Media Production, and Business Development. Based in Moscow, open to global opportunities.',
     keywords: ['Kelechi Ekpemiro', 'IT Project Manager', 'Business Development Consultant', 'Media Producer', 'Skoltech', 'Skolkovo', 'Moscow', 'Innovation', 'Engineering Systems', 'StraightenUp AI', 'agile', 'risk management', 'wedding', 'event', 'live stream', 'tech startups', 'SMEs', 'sales systems', 'ERP', '1C', 'integrations'],
     ogImage: '/IMG_2331.jpg',
     canonicalUrl: window.location.origin,

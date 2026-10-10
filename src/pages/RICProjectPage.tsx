@@ -249,7 +249,7 @@ export function RICProjectPage() {
             {...fadeInUp}
             className="text-center text-slate-300 text-lg max-w-3xl mx-auto mb-16 leading-relaxed"
           >
-            RIC aims to position Nigeria—and by extension Africa—as a <span className="text-white font-semibold">serious stakeholder on the global innovation stage</span>, while strengthening local industrial capacity and social resilience.
+            RIC aims to position Nigeria, and by extension Africa, as a <span className="text-white font-semibold">serious stakeholder on the global innovation stage</span>, while strengthening local industrial capacity and social resilience.
           </motion.p>
 
           <motion.div

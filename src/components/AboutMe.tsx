@@ -65,9 +65,9 @@ export function AboutMe() {
               <div className="mt-8">
                 <button
                   onClick={() => setShowDetails(!showDetails)}
-                  className="group inline-flex items-center gap-2 text-blue-400 hover:text-blue-300 font-medium transition-colors"
+                  className="group inline-flex items-center gap-2 text-gray-500 hover:text-gray-300 font-medium transition-colors"
                 >
-                  <span>{showDetails ? 'Show Less' : 'View Qualifications'}</span>
+                  <span>{showDetails ? 'Show Less' : 'View More'}</span>
                   <ChevronDown
                     className={`w-5 h-5 transition-transform duration-300 ${showDetails ? 'rotate-180' : ''}`}
                   />
@@ -90,7 +90,7 @@ export function AboutMe() {
                       </p>
 
                       <p>
-                        He is an active member of the Project Management Institute (PMI) and a Google-certified Project Management Professional. He co-founded <strong className="text-gray-200">StraightenUp</strong>, an AI and wearables startup admitted to the Skolkovo Foundation ecosystem, and founded <strong className="text-gray-200">Focus Films</strong>, a media production brand delivering videography, live broadcasting, and post-production for commercial and social projects.
+                        He is an active member of the Project Management Institute (PMI) and a Google-certified Project Management Professional. He co-founded <strong className="text-gray-200">StraightenUp</strong>, an AI and wearables startup admitted to the Skolkovo Foundation ecosystem, and founded <strong className="text-gray-200">Focus Films</strong>, a media production brand delivering videography, live broadcasting, and post-production for commercial and social projects. He is also involved with the <strong className="text-gray-200">Polaris Innovation Network</strong> and works on telemedicine initiatives aimed at expanding access to care through technology.
                       </p>
 
                       <p>

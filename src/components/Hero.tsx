@@ -43,7 +43,7 @@ export function Hero() {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="text-2xl sm:text-3xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed font-light"
         >
-          I turn ideas into systems, stories, and sustainable businesses.
+          Turning ideas into systems, stories, and sustainable ventures.
         </motion.p>
 
         <motion.div

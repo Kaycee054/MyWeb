@@ -10,31 +10,26 @@ export function Footer() {
       name: 'LinkedIn',
       icon: Linkedin,
       url: 'https://linkedin.com/in/kelechi-ekpemiro',
-      color: 'hover:text-blue-400',
     },
     {
       name: 'GitHub',
       icon: Github,
       url: 'https://github.com/kcekpemiro',
-      color: 'hover:text-gray-300',
     },
     {
       name: 'Instagram',
       icon: Instagram,
       url: 'https://instagram.com/kcekpemiro',
-      color: 'hover:text-pink-400',
     },
     {
       name: 'Telegram',
       icon: MessageCircle,
       url: 'https://t.me/kcekpemiro',
-      color: 'hover:text-blue-500',
     },
     {
       name: 'YouTube',
       icon: Youtube,
       url: 'https://youtube.com/@kcekpemiro',
-      color: 'hover:text-red-500',
     },
   ]
 
@@ -46,25 +41,26 @@ export function Footer() {
   ]
 
   return (
-    <footer className="bg-gray-900 border-t border-gray-800">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+    <footer className="bg-apple-gray-950 border-t border-apple-gray-800/60">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
           {/* Brand Section */}
           <div className="col-span-1 md:col-span-2">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
+              transition={{ duration: 0.6, ease: [0.42, 0, 0.58, 1] }}
             >
-              <h3 className="text-2xl font-bold text-white mb-4">Kelechi Ekpemiro</h3>
+              <h3 className="text-xl font-bold text-white mb-5 tracking-tight">Kelechi Ekpemiro</h3>
 
               {/* Contact Info */}
               <div className="space-y-2 mb-6">
-                <div className="flex items-center space-x-3 text-gray-400">
+                <div className="flex items-center space-x-3 text-apple-gray-400 text-sm">
                   <MapPin className="w-4 h-4" />
                   <span>Moscow, Russia</span>
                 </div>
-                <div className="flex items-center space-x-3 text-gray-400">
+                <div className="flex items-center space-x-3 text-apple-gray-400 text-sm">
                   <Mail className="w-4 h-4" />
                   <a href="mailto:ekpemirokelechi@gmail.com" className="hover:text-white transition-colors">
                     ekpemirokelechi@gmail.com
@@ -73,7 +69,7 @@ export function Footer() {
               </div>
 
               {/* Social Links */}
-              <div className="flex flex-wrap gap-3">
+              <div className="flex flex-wrap gap-2">
                 {socialLinks.map((social) => {
                   const Icon = social.icon
                   return (
@@ -82,11 +78,11 @@ export function Footer() {
                       href={social.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={`group relative text-gray-400 ${social.color} transition-all duration-200 p-2 rounded-lg hover:bg-gray-800 hover:scale-110`}
+                      className="group text-apple-gray-500 hover:text-white transition-colors p-2.5 rounded-apple-sm hover:bg-apple-gray-800/60"
                       title={social.name}
                       aria-label={`Follow Kelechi on ${social.name}`}
                     >
-                      <Icon className="w-5 h-5" />
+                      <Icon className="w-[18px] h-[18px]" />
                     </a>
                   )
                 })}
@@ -100,15 +96,15 @@ export function Footer() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
+              transition={{ duration: 0.6, delay: 0.1, ease: [0.42, 0, 0.58, 1] }}
             >
-              <h4 className="text-white font-semibold mb-4">Expertise Areas</h4>
-              <ul className="space-y-2">
+              <h4 className="text-white font-semibold mb-4 text-sm tracking-tight">Expertise Areas</h4>
+              <ul className="space-y-2.5">
                 {quickLinks.map((link) => (
                   <li key={link.name}>
                     <a
                       href={link.href}
-                      className="text-gray-400 hover:text-white transition-colors text-sm flex items-center space-x-1 group"
+                      className="text-apple-gray-400 hover:text-white transition-colors text-sm flex items-center space-x-1 group"
                     >
                       <span>{link.name}</span>
                       <ExternalLink className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -125,15 +121,15 @@ export function Footer() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
+              transition={{ duration: 0.6, delay: 0.2, ease: [0.42, 0, 0.58, 1] }}
             >
-              <h4 className="text-white font-semibold mb-4">Services</h4>
-              <ul className="space-y-2 text-sm text-gray-400">
+              <h4 className="text-white font-semibold mb-4 text-sm tracking-tight">Services</h4>
+              <ul className="space-y-2.5 text-sm text-apple-gray-400">
                 <li className="hover:text-white transition-colors cursor-default">Project Management</li>
                 <li className="hover:text-white transition-colors cursor-default">Systems Integration</li>
                 <li className="hover:text-white transition-colors cursor-default">Media Production</li>
                 <li className="hover:text-white transition-colors cursor-default">Business Development</li>
-                <li className="hover:text-white transition-colors cursor-default">AI & Automation</li>
+                <li className="hover:text-white transition-colors cursor-default">AI &amp; Automation</li>
                 <li className="hover:text-white transition-colors cursor-default">Technical Consulting</li>
               </ul>
             </motion.div>
@@ -141,13 +137,13 @@ export function Footer() {
         </div>
 
         {/* Bottom Section */}
-        <div className="border-t border-gray-800 mt-8 pt-8">
+        <div className="border-t border-apple-gray-800/60 mt-12 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <motion.p
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              className="text-gray-400 text-sm mb-4 md:mb-0"
+              className="text-apple-gray-500 text-xs mb-4 md:mb-0"
             >
               © {currentYear} Kelechi Ekpemiro. All rights reserved.
             </motion.p>
@@ -156,7 +152,7 @@ export function Footer() {
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              className="flex flex-wrap gap-6 text-sm text-gray-400"
+              className="flex flex-wrap gap-6 text-xs text-apple-gray-500"
             >
               <button
                 onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
